@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthe/screen/login_screen/login_screen.dart';
 
 import '../value/color.dart';
+import 'assisment_screen/assisment_screen.dart';
 
 class WelComeScreen extends StatefulWidget {
   const WelComeScreen({Key? key}) : super(key: key);
@@ -61,7 +63,7 @@ class _WelComeScreenState extends State<WelComeScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-
+                          Get.to(()=> QuizScreen());
                         },
                         child: Container(
                             height: 60,
@@ -112,7 +114,9 @@ class _WelComeScreenState extends State<WelComeScreen> {
                         height: 20,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(()=>const LoginScreen());
+                        },
                         child: Container(
                           height: 60,
                           alignment: Alignment.center,
