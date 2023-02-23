@@ -1,7 +1,13 @@
-import 'dart:async';
+
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:healthe/screen/assisment_screen/question_model.dart';
+import 'package:healthe/screen/login_screen/login_screen.dart';
+
+import '../../value/color.dart';
+
 
 
 class QuizScreen extends StatefulWidget {
@@ -20,11 +26,24 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset : false,
-        backgroundColor: const Color.fromARGB(255, 60, 2, 83),
+
 
         body: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-          child: Column(children: [
+
+          padding: const EdgeInsets.only(left: 15,right: 15,),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [gradientColors_1, gradientColors_1],
+              begin: const FractionalOffset(0.0, 0.0),
+              end: const FractionalOffset(0.5, 0.0),
+            ),
+          ),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
             const Text(
               "Assessment Demo",
               style: TextStyle(
@@ -32,6 +51,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 fontSize: 24,
               ),
             ),
+            const SizedBox(height: 20,),
             _questionWidget(),
             _answerList(),
             _nextButton(),
@@ -45,21 +65,24 @@ class _QuizScreenState extends State<QuizScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Question ${currentQuestion + 1}/${questionList.length.toString()}",
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
+        Container(
+          alignment: Alignment.center,
+          child: Text(
+            "Question ${currentQuestion + 1}/${questionList.length.toString()}",
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
-        const SizedBox(height: 20),
+
         Container(
           alignment: Alignment.center,
           width: double.infinity,
           padding: const EdgeInsets.all(32),
           decoration: BoxDecoration(
-            color: Colors.orangeAccent,
+            //color: Colors.white,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Text(
@@ -97,25 +120,36 @@ class _QuizScreenState extends State<QuizScreen> {
       isLastQuestion = true;
     }
 
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
-      height: 48,
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(),
-            primary: Colors.blueAccent,
-            onPrimary: Colors.white,
-          ),
-          onPressed: () {
-            _questionWidget();
+    return InkWell(
+      onTap: () {
 
-            setState(() {
-              currentQuestion++;
-            });
+        if(isLastQuestion==true){
+          Get.to(()=>const LoginScreen());
+        }else{
+          _questionWidget();
 
-          },
-          child: const Text("Next")),
+          setState(() {
+            currentQuestion++;
+          });
+        }
+
+
+      },
+      child: Container(
+        height: 60,
+        alignment: Alignment.center,
+        margin: const EdgeInsets.only(left: 15, right: 15,top: 25),
+        decoration: BoxDecoration(color: whiteColors, borderRadius: BorderRadius.circular(99)),
+        child: Text(
+          "Next",
+          style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.normal, color: gradientColors_1),
+        ),
+      ),
     );
+
+
+
+
   }
 
   // Widget for Each Answer button
@@ -123,27 +157,30 @@ class _QuizScreenState extends State<QuizScreen> {
 
     bool isSelected = answer == selectedAnswer;
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      height: 48,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shape: const StadiumBorder(),
-          primary: isSelected ? Colors.orangeAccent : Colors.white,
-          onPrimary: isSelected ? Colors.white : Colors.black,
+    return InkWell(
+      onTap: (){
+        if (selectedAnswer == null && answer.isCorrect) {
+          score++;
+        }
+
+        setState(() {
+          selectedAnswer = answer;
+        });
+      },
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        height: 48,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: isSelected ?Colors.white :  gradientColors_1,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.white,
+            width: 2
+          )
         ),
-        onPressed: () {
-
-          if (selectedAnswer == null && answer.isCorrect) {
-            score++;
-          }
-
-          setState(() {
-            selectedAnswer = answer;
-          });
-        },
-        child: Text(answer.answerText),
+        child:Text(answer.answerText),
       ),
     );
   }

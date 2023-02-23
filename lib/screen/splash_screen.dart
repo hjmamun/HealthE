@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthe/screen/welcome_screen.dart';
 
@@ -55,10 +56,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   right: 0,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const WelComeScreen()),
-                      );
+
+                      Get.to(()=>const WelComeScreen());
                     },
                     child: Container(
                       height: 60,
