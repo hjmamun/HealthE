@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthe/screen/assisment_screen/question_model.dart';
 import 'package:healthe/screen/login_screen/login_screen.dart';
+import 'package:healthe/screen/sign_up/sign_up_screen.dart';
 
 import '../../value/color.dart';
 
@@ -124,7 +125,7 @@ class _QuizScreenState extends State<QuizScreen> {
       onTap: () {
 
         if(isLastQuestion==true){
-          Get.to(()=>const LoginScreen());
+          Get.to(()=>const SignUpScreen());
         }else{
           _questionWidget();
 

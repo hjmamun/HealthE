@@ -44,7 +44,7 @@ class _MainPageState extends State<MainPage> {
             // "Welcome,
             Container(
                 margin: const EdgeInsets.only(left:20),
-                child: AppLargeText(size: 20, text: "Welcome, Jason", color: Colors.black)),
+                child: AppLargeText(size: 20, text: "Welcome, User", color: Colors.black)),
 
             const SizedBox(height: 30),
 

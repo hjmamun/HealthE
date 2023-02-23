@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppLargeText extends StatelessWidget {
   double size;
@@ -14,7 +15,7 @@ class AppLargeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
         text,
-        style: TextStyle(
+        style: GoogleFonts.ibarraRealNova(
           color: color,
           fontSize: size,
           fontWeight: FontWeight.bold,
