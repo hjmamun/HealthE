@@ -6,6 +6,7 @@ import 'package:healthe/screen/home_screen/home_screen.dart';
 import 'package:healthe/value/color.dart';
 
 import '../../value/constant.dart';
+import '../assisment_screen/assisment_screen.dart';
 import '../common_widget/button_widget.dart';
 import '../sign_up/sign_up_screen.dart';
 
@@ -173,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.center,
                     child: InkWell(
                       onTap: () {
-                        Get.to(()=>const SignUpScreen());
+                        Get.to(()=> QuizScreen());
                       },
                       child: Text(
                         "I don't have an account?",
