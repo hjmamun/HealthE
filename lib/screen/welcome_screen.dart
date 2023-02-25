@@ -50,7 +50,7 @@ class _WelComeScreenState extends State<WelComeScreen> {
                     child: Text(
                       "Enhance your workout experience with our latest workout app",
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.normal, color: coffeeColors),
+                      style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
                     ),
                   ),
                 ],

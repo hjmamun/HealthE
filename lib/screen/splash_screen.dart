@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                   Text(
                     "Everybody Can Train",
-                    style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.normal, color: coffeeColors),
+                    style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black),
                   ),
                 ],
               ),
